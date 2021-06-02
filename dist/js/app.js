@@ -47,8 +47,8 @@
         });
     }
 
-    // enter hyperspace on button click
-    hyperBtn.addEventListener( "click", function()
+    // enter hyperspace automatically
+    setInterval(function()
     {
         content.classList.remove( "active" );
         stage.triggerEvent( "hyperStart" );
@@ -59,7 +59,7 @@
             stage.triggerEvent( "hyperStop" );
 
         }, 2500 );
-    });
+    }, 25000);
 
     // zoom in on press
     stage.onEvent( "onPress", function( mouse )
@@ -127,11 +127,13 @@
         error.classList.remove( "active" );
         content.classList.add( "active" );
         share.classList.add( "active" );
-        stats.classList.add( "active" );
+        //stats.classList.add( "active" );
 
-        setInterval( function() {
+        /*
+	 setInterval( function() {
             stats.innerHTML = stage.getFps();
-        }, 300 );
+         }, 300 );
+	*/
     });
 
     // add objects to stage and init
