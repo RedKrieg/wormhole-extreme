@@ -47,20 +47,6 @@
         });
     }
 
-    // enter hyperspace automatically
-    setInterval(function()
-    {
-        content.classList.remove( "active" );
-        stage.triggerEvent( "hyperStart" );
-
-        setTimeout( function()
-        {
-            content.classList.add( "active" );
-            stage.triggerEvent( "hyperStop" );
-
-        }, 2500 );
-    }, 25000);
-
     // zoom in on press
     stage.onEvent( "onPress", function( mouse )
     {
@@ -123,6 +109,12 @@
     // everything loaded successfully
     stage.onEvent( "onInit", function( now )
     {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var title = content.querySelector("#content_title");
+        title.innerHTML = urlParams.get("title") || title.innerHTML;
+        var description = content.querySelector("#content_description");
+        description.innerHTML = urlParams.get("description") || description.innerHTML;
         loader.classList.remove( "active" );
         error.classList.remove( "active" );
         content.classList.add( "active" );
@@ -130,10 +122,24 @@
         //stats.classList.add( "active" );
 
         /*
-	 setInterval( function() {
+	    setInterval( function() {
             stats.innerHTML = stage.getFps();
-         }, 300 );
-	*/
+        }, 300 );
+	    */
+
+        // enter hyperspace automatically
+        setInterval(function()
+        {
+            content.classList.remove( "active" );
+            stage.triggerEvent( "hyperStart" );
+
+            setTimeout( function()
+            {
+                content.classList.add( "active" );
+                stage.triggerEvent( "hyperStop" );
+
+            }, 2500 );
+        }, 20000);
     });
 
     // add objects to stage and init
@@ -142,5 +148,4 @@
     stage.addObject( new Planets() );
     stage.addObject( new Wormhole() );
     stage.init();
-
 })();
