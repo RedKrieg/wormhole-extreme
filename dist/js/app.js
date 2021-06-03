@@ -131,11 +131,13 @@
         setInterval(function()
         {
             content.classList.remove( "active" );
+            share.classList.remove( "active" );
             stage.triggerEvent( "hyperStart" );
 
             setTimeout( function()
             {
                 content.classList.add( "active" );
+                share.classList.add( "active" );
                 stage.triggerEvent( "hyperStop" );
 
             }, 2500 );
