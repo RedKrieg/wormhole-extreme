@@ -186,11 +186,11 @@ Builder.prototype = {
         if( this._wlist.length && this._watching !== true )
         {
             this._watching = true;
-            gulp.watch( this._wlist, this._buildOnWatch ).on( "change", function( e )
+            gulp.watch( this._wlist, this._buildOnWatch );/*.on( "change", function( e )
             {
                 var file = e.path.replace( __dirname, "" ).replace( /[\\]+/g, "/" );
                 console.log( "\n" + "File "+ e.type  +": " + file + ", ..." );
-            });
+            });*/
         }
     },
 
@@ -265,7 +265,7 @@ Builder.prototype = {
             .src( this._files.js )
             .on( "end", function(){ logDone( "js" ); } )
             .pipe( plumber( { errorHandler: this.onError } ) )
-            .pipe( uglify( { preserveComments: false } ).on( "error", this.onError ) )
+            .pipe( uglify().on( "error", this.onError ) )
             .pipe( replace( /[\t\r\n]+/g, "" ) )
             .pipe( wrapper( { header: "/* Source: ${filename} */ \r\n" } ) )
             .pipe( concat( this._outname +".js", { newLine: "\r\n\r\n" } ) )

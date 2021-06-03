@@ -2,7 +2,7 @@
  * Main Styles
  */
 @charset "UTF-8";
-@import "https://fonts.googleapis.com/css?family=Denk+One";
+@import "https://fonts.googleapis.com/css?family=Odibee+Sans";
 
 /**
  * Resets
@@ -10,7 +10,7 @@
 *,
 *:before,
 *:after {
-    font-family: "Denk One", Arial, sans-serif;
+    font-family: "Odibee Sans", Arial, sans-serif;
     margin: 0;
     padding: 0;
     font-weight: normal;
@@ -35,8 +35,8 @@ body {
 body {
     overflow: hidden;
     overflow-y: auto;
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 48px;
+    line-height: 64px;
     background: #010101 url( "../images/bg.jpg" ) 50% 50% no-repeat;
     background-size: cover;
     color: #f0f0f0;
